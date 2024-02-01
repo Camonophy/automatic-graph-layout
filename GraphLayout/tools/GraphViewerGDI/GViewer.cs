@@ -37,7 +37,7 @@ namespace Microsoft.Msagl.GraphViewerGdi {
   /// Summary description for DOTViewer.
   /// </summary>
   [SuppressMessage("Microsoft.Maintainability", "CA1506:AvoidExcessiveClassCoupling")]
-  public sealed partial class GViewer : UserControl {
+  public sealed partial class GViewer : UserControl, ICloneable {
     #region Support for layout editing
 
     double arrowheadLength = 10;
@@ -2355,6 +2355,11 @@ namespace Microsoft.Msagl.GraphViewerGdi {
     double GetFitScale() {
       return OriginalGraph == null ? 1 : Math.Min(panel.Width / originalGraph.Width, panel.Height / originalGraph.Height);
     }
+
+    public object Clone()
+{
+    return this.MemberwiseClone();
+}
   }
 
 
