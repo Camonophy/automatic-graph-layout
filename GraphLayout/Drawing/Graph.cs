@@ -16,7 +16,7 @@ namespace Microsoft.Msagl.Drawing {
     /// Graph for drawing. Putting an instance of this class to property Graph triggers the layout under the hood
     /// </summary>
     [Serializable]
-    public class Graph : DrawingObject, ILabeledObject {
+    public class Graph : DrawingObject, ILabeledObject, ICloneable {
         private Subgraph rootSubgraph=new Subgraph("the root subgraph's boundary");
         ///<summary>
         ///</summary>
@@ -601,5 +601,10 @@ namespace Microsoft.Msagl.Drawing {
             var graphReader = new GraphReader(stream);
             return graphReader.Read();
         }
+
+        public object Clone()
+{
+    return this.MemberwiseClone();
+}
     }
 }
